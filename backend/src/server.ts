@@ -1,16 +1,15 @@
-import express from 'express';
+import { createApp } from './app.js';
+import { readConfig } from './config/env.js';
 
-const app = express();
-const port = Number(process.env.PORT ?? 3001);
-
-app.use(express.json());
-app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok', message: 'Backend conectado com sucesso.' });
-});
-app.get('/api/membros', (_req, res) => {
-  res.json([]);
+const config = readConfig();
+const { app, store } = await createApp(config);
+const server = app.listen(config.port, config.host, () => {
+  console.log(`Backend disponível em http://${config.host}:${config.port}`);
 });
 
-app.listen(port, '127.0.0.1', () => {
-  console.log('Backend disponível em http://localhost:' + port);
-});
+function shutdown() {
+  server.close(() => { store.close(); process.exit(0); });
+  setTimeout(() => process.exit(1), 10_000).unref();
+}
+process.once('SIGTERM', shutdown);
+process.once('SIGINT', shutdown);

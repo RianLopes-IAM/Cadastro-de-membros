@@ -2,6 +2,7 @@
   "name": "projeto-dados-membros",
   "version": "1.0.0",
   "private": true,
+  "engines": { "node": ">=24" },
   "workspaces": [
     "frontend",
     "backend"
@@ -10,7 +11,9 @@
     "dev": "concurrently -k -n frontend,backend \"npm run dev -w frontend\" \"npm run dev -w backend\"",
     "build": "npm run build --workspaces",
     "lint": "npm run lint -w frontend",
-    "start": "npm run start -w backend"
+    "start": "npm run start -w backend",
+    "create-admin": "npm run create-admin -w backend",
+    "test": "npm run test -w backend"
   },
   "devDependencies": {
     "concurrently": "^10.0.5"

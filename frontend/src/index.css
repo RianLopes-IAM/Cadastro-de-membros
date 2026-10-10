@@ -1,3 +1,13 @@
-:root { font-family: Inter, system-ui, sans-serif; color: #f2f6ff; background: #101b2c; font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+:root {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #223b31; background: #fbfaf6; font-synthesis: none;
+  text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; }
+button, input { font: inherit; }
+button, a, input { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+button:disabled { cursor: wait; }
+button:focus-visible, a:focus-visible, input[type='checkbox']:focus-visible { outline: 3px solid #a6bb80; outline-offset: 4px; }
+::selection { background: #dce8cc; color: #173a2a; }

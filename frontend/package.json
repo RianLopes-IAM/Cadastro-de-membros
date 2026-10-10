@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --configLoader native",
     "build": "tsc -b && vite build --configLoader native",
-    "lint": "oxlint",
+    "lint": "oxlint src vite.config.ts --deny-warnings",
     "preview": "vite preview"
   },
   "dependencies": {
